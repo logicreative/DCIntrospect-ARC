@@ -6,12 +6,12 @@
 //
 //
 
+#ifdef __IPHONE_7_0
+
 #import "DCTextView.h"
 #import "DCIntrospectSettings.h"
 
 @implementation DCTextView
-
-#ifdef __IPHONE_7_0
 
 - (NSArray *)keyCommands {
     return @[[UIKeyCommand keyCommandWithInput:kDCIntrospectKeysInvoke modifierFlags:0 action:@selector(invoke)],
@@ -265,6 +265,9 @@
     }
 }
 
-#endif
-
 @end
+
+#else
+@implementation DCTextView
+@end
+#endif

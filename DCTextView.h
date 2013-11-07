@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, FrameManipulation) {
     FrameManipulationDecreaseAlpha,
 };
 
+#ifdef __IPHONE_7_0
 @protocol DCTextViewDelegate <UITextViewDelegate>
 
 - (void) disableForPeriod;
@@ -57,3 +58,11 @@ typedef NS_ENUM(NSUInteger, FrameManipulation) {
 @property (nonatomic, weak) id<DCTextViewDelegate> keyboardInputDelegate;
 
 @end
+
+#else
+@protocol DCTextViewDelegate <UITextViewDelegate>
+@end
+@interface DCTextView : UITextView
+@property (nonatomic, unsafe_unretained) id<DCTextViewDelegate> keyboardInputDelegate;
+@end
+#endif
